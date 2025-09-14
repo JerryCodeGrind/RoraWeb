@@ -21,7 +21,7 @@ const DownloadIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
 
 export default function Home() {
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-amber-950 via-stone-900 to-amber-950 overflow-hidden">
+    <div className="w-full h-screen bg-gradient-to-br from-amber-950 via-yellow-900 to-orange-950 overflow-hidden">
       {/* 3D Scene */}
       <Canvas 
         shadows 
@@ -35,10 +35,23 @@ export default function Home() {
       <div className="fixed inset-0 pointer-events-none z-10">
         {/* Header at top */}
         <div className="absolute top-12 left-0 right-0 text-center pointer-events-none">
-          <h1 className="text-7xl font-playfair font-bold text-amber-100 mb-3 tracking-wide drop-shadow-2xl">
+          <h1 
+            className="text-7xl font-bold mb-3 tracking-wide drop-shadow-2xl"
+            style={{ 
+              fontFamily: 'var(--font-playfair)', 
+              color: '#fef3c7',
+              textShadow: '0 4px 8px rgba(146, 64, 14, 0.8)'
+            }}
+          >
             Rora
           </h1>
-          <p className="text-amber-200/80 text-xl font-montserrat font-light tracking-wide">
+          <p 
+            className="text-xl font-light tracking-wide"
+            style={{ 
+              fontFamily: 'var(--font-montserrat)', 
+              color: '#fde68a'
+            }}
+          >
             Cherishing every memory and turning it into a 3D experience
           </p>
         </div>
@@ -48,7 +61,13 @@ export default function Home() {
           <a
             href="/debug.apk"
             download="debug.apk"
-            className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-200 to-amber-100 text-amber-900 rounded-full font-montserrat font-semibold hover:from-amber-100 hover:to-amber-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-amber-300/30"
+            className="flex items-center gap-3 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border"
+            style={{
+              fontFamily: 'var(--font-montserrat)',
+              background: 'linear-gradient(135deg, #fde68a, #f59e0b)',
+              color: '#92400e',
+              borderColor: 'rgba(217, 119, 6, 0.3)'
+            }}
           >
             <DownloadIcon />
             <span>Download APK</span>
