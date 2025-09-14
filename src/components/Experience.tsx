@@ -39,7 +39,7 @@ const MonsterStage: React.FC<MonsterStageProps> = ({
   ...props
 }) => {
   const map = useTexture(texture);
-  const portalMaterial = useRef<THREE.ShaderMaterial>(null);
+  const portalMaterial = useRef(null);
 
   useFrame((_state, delta) => {
     const worldOpen = active === name;
