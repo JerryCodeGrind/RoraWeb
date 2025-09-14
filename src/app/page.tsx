@@ -36,7 +36,7 @@ export default function Home() {
         {/* Header at top */}
         <div className="absolute top-12 left-0 right-0 text-center pointer-events-none">
           <h1 className="text-7xl font-playfair font-bold text-amber-100 mb-3 tracking-wide drop-shadow-2xl">
-            rora
+            Rora
           </h1>
           <p className="text-amber-200/80 text-xl font-montserrat font-light tracking-wide">
             Cherishing every memory and turning it into a 3D experience
