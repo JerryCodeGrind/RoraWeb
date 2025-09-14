@@ -7,14 +7,11 @@ import {
   RoundedBox,
   useCursor,
   useTexture,
-  Html,
 } from "@react-three/drei";
-import Image from "next/image";
 import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import MouseParallax from "./MouseParallax";
 
 interface MonsterStageProps {
   children?: React.ReactNode;
@@ -82,59 +79,7 @@ const MonsterStage: React.FC<MonsterStageProps> = ({
   );
 };
 
-const LoveMessage: React.FC = () => {
-  const [showImage, setShowImage] = useState(false);
-  
-  return (
-    <Html
-      position={[0, -4, 0]}
-      center
-      style={{ pointerEvents: 'auto' }}
-    >
-      <div className="relative">
-        <div
-          className="text-white/70 text-sm font-light tracking-wide cursor-pointer hover:text-white/90 transition-colors duration-300 select-none"
-          onMouseEnter={() => setShowImage(true)}
-          onMouseLeave={() => setShowImage(false)}
-        >
-          made with love ♥
-        </div>
-        {showImage && (
-          <div
-            className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 pointer-events-none"
-            style={{
-              animation: 'fadeIn 0.3s ease-in-out'
-            }}
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 shadow-xl border border-white/20">
-              <Image
-                src="/image.png"
-                alt="Made with love"
-                width={128}
-                height={128}
-                className="object-cover rounded-md"
-                style={{ imageRendering: 'crisp-edges' }}
-              />
-            </div>
-            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/10"></div>
-          </div>
-        )}
-      </div>
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-          }
-        }
-      `}</style>
-    </Html>
-  );
-};
+
 
 export const Experience: React.FC = () => {
   const [active, setActive] = useState<string | null>(null);
@@ -166,7 +111,6 @@ export const Experience: React.FC = () => {
 
   return (
     <>
-      <MouseParallax strength={0.1} isEnabled={!active} />
       <ambientLight intensity={0.4} color="#fbbf24" />
       <directionalLight position={[10, 10, 5]} intensity={0.3} color="#d97706" />
       <Environment preset="dawn" />
@@ -207,7 +151,6 @@ export const Experience: React.FC = () => {
         hovered={hovered}
         setHovered={setHovered}
       />
-      <LoveMessage />
     </>
   );
 };
