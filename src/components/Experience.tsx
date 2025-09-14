@@ -9,6 +9,7 @@ import {
   useTexture,
   Html,
 } from "@react-three/drei";
+import Image from "next/image";
 import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
@@ -24,14 +25,13 @@ interface MonsterStageProps {
   setActive: (name: string | null) => void;
   hovered: string | null;
   setHovered: (name: string | null) => void;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const MonsterStage: React.FC<MonsterStageProps> = ({
   children,
   texture,
   name,
-  color,
   active,
   setActive,
   hovered,
@@ -39,7 +39,7 @@ const MonsterStage: React.FC<MonsterStageProps> = ({
   ...props
 }) => {
   const map = useTexture(texture);
-  const portalMaterial = useRef<any>(null);
+  const portalMaterial = useRef<THREE.ShaderMaterial>(null);
 
   useFrame((_state, delta) => {
     const worldOpen = active === name;
@@ -107,10 +107,12 @@ const LoveMessage: React.FC = () => {
             }}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 shadow-xl border border-white/20">
-              <img
+              <Image
                 src="/image.png"
                 alt="Made with love"
-                className="w-32 h-32 object-cover rounded-md"
+                width={128}
+                height={128}
+                className="object-cover rounded-md"
                 style={{ imageRendering: 'crisp-edges' }}
               />
             </div>
